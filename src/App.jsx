@@ -6,11 +6,13 @@ import Watchlist from "./Pages/Watchlist/Watchlist";
 import Favorites from '/src/Pages/Favorites/Favorites.jsx';
 import Popular from '/src/Pages/Popular/Popular.jsx';
 import Random from "./Pages/Random/Random";
+import ironflixLogo from '/src/assets/ironflix-logo.png'
 function App() {
 
 
   return (
     <>
+    <img src={ironflixLogo} alt="ironflix logo" id="main-logo"/>
     <Navbar />
     <div id="main-container">
     <Routes>

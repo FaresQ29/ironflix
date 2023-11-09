@@ -5,22 +5,33 @@
 }
 
 body{
+    background-color: rgba(0, 0, 0, 1);
+}
+#main-logo{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    width: 150px;
 
 }
-
 #root{
 
 }
 
 nav{
     position: fixed;
+    top: 0;
+    left: 0;
     width: 200px;
     height: 100%;
-    background-color: rgba(137, 157, 143, 0.247);
+    background-color: rgba(251, 251, 251, 1);
 }
 
 #main-container{
-    background-color: rgba(0, 0, 255, 0.05);
     height: 100vh;
 
+}
+
+.loading-cont{
+    color: white;
 }

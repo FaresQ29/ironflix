@@ -1,0 +1,11 @@
+#main-container:has(#home-main){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home-main{
+    height: 100%;
+    margin-top: 120px;
+    width: 80%;
+    border: 1px solid rgb(252, 252, 252);
+}

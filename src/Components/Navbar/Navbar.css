@@ -1,6 +1,7 @@
 nav{
     transition: transform 0.3s linear;
 }
+
 .hidden-nav{
     transform:translateX(-180px)
 }
@@ -14,9 +15,15 @@ nav{
     padding: 20% 0;
 }
 #nav-links{
-
+    text-align: center;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
 }
 #nav-handle{
     position: absolute;
