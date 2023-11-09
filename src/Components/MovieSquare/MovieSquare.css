@@ -1,0 +1,57 @@
+.movie-square{
+    position: relative;
+    display: flex;
+    color: white;
+    transition: transform 0.2s linear;
+    cursor: pointer;
+
+    
+}
+.movie-square:hover{
+    transform: scale(1.1);
+    z-index: 10;
+
+
+}
+.movie-square:active{
+    transform: scale(1);
+
+}
+.movie-square img{
+    width: 200px;
+    border-radius: 10px;
+    
+}
+.movie-square-main-div{
+
+
+}
+.movie-square-main-div p{
+    position: absolute;
+    left: 0;
+    top: 40%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.574);
+    width: 100%;
+    font-size: 1.3rem;
+
+}
+.movie-square-inner-div{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.574);
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    padding: 5px;
+  
+}
+
+.movie-square-inner-div img{
+    width: 20px;
+}

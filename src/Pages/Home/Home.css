@@ -2,10 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 92vh;
+
 }
 #home-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
     height: 100%;
     margin-top: 120px;
     width: 80%;
-    border: 1px solid rgb(252, 252, 252);
+    overflow: scroll;
+    padding-top: 40px;
 }

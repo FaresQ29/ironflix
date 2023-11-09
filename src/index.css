@@ -25,6 +25,7 @@ nav{
     width: 200px;
     height: 100%;
     background-color: rgba(251, 251, 251, 1);
+    z-index: 10;
 }
 
 #main-container{
