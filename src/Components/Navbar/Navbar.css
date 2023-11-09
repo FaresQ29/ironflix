@@ -1,0 +1,20 @@
+nav{
+    transition: transform 0.3s linear;
+}
+.hidden-nav{
+    transform:translateX(-180px)
+}
+#inner-nav{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+#nav-handle{
+    position: absolute;
+    right: 0;
+    width: 20px;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+}
+    
