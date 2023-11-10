@@ -12,8 +12,6 @@ export default function MoviePage(){
             try{
                 const response = await findAPI(movieId)
                 const credits = await creditAPI(movieId)
-                console.log(response);
-                console.log(credits);
                 setMovie(response.data)
             }
             catch(error){console.log(error);}
@@ -23,7 +21,7 @@ export default function MoviePage(){
 
     return(
         <>
-
+            <p>test</p>
         </>
     )
 }

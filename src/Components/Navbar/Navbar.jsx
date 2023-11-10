@@ -44,29 +44,34 @@ function ThemePicker(){
 
 
 function Navhandle({navElem}){
+    const storageVal = localStorage.getItem("nav-shown");
+    const [navShown, setNavShown] = useState(true)
 
-    const [navShown, setNavShown] = useState(()=>{
-        const storageVal = localStorage.getItem("hidden-nav");
-        return true
-
-    })
-    function showHideNav(){
-
-    }
     useEffect(()=>{
-        console.log(navElem);
+        const nav = navElem.current;
+        if(storageVal===null){
+            setNavShown(true)
+        }
+        else if(storageVal==="false"){
+            nav.classList.add("hidden-nav")
+            setNavShown(false)
+        }
+        else{
+            nav.classList.remove("hidden-nav")
+            setNavShown(true)
+        }
     }, [])
 
     function handleFunc(e){
         const nav = e.target.parentElement.parentElement
-        console.log(nav);
+
         if(!navShown){
             nav.classList.remove("hidden-nav")
-            localStorage.setItem("nav-hidden", false)
+            localStorage.setItem("nav-shown", true)
         }
         else{
             nav.classList.add("hidden-nav")
-            localStorage.setItem("nav-hidden", true)
+            localStorage.setItem("nav-shown", false)
 
         }
         setNavShown(prev => !prev)
