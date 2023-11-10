@@ -7,13 +7,7 @@
 body{
     background-color: rgba(0, 0, 0, 1);
 }
-#main-logo{
-    position: fixed;
-    right: 5px;
-    top: 5px;
-    width: 150px;
 
-}
 #root{
 
 }

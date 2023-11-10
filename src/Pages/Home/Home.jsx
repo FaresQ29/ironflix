@@ -42,7 +42,8 @@ export default function Home(){
                 {!fetching && (
                     movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie = {movie}/></Link>)
                 )}
-                <button id="load-more-btn-home" onClick={()=>{loadMore()}}>Load more movies</button>
+                {!fetching && <button id="load-more-btn-home" onClick={()=>{loadMore()}}>Load more movies</button>}
+                
             </div>
 
 
