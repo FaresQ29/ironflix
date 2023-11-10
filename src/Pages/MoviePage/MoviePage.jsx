@@ -21,7 +21,7 @@ export default function MoviePage(){
 
     return(
         <>
-            <p>test</p>
+   
         </>
     )
 }
