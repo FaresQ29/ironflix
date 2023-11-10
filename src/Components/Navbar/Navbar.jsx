@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom"
+import ironFlixLogo from '/src/assets/ironflix-logo.png';
 import { useState, useEffect, useRef } from "react";
 
 import '/src/Components/Navbar/Navbar.css'
@@ -7,6 +8,7 @@ export default function Navbar(){
     const navRef = useRef(null)
     return (
         <nav ref={navRef}>
+            <img src={ironFlixLogo} id="main-logo"/>
             <div id="inner-nav">
                 <div id="nav-links">
                     <Link to="/">Home</Link>

@@ -1,7 +1,19 @@
 nav{
     transition: transform 0.3s linear;
+    position: relative;
 }
-
+#main-logo{
+    position: absolute;
+    right: -150px;
+    top: 12px;
+    -webkit-user-drag: none;
+    width: 150px;
+}
+@media screen and (max-width: 749px) {
+    #main-logo{
+       top: 60px;
+    } 
+}
 .hidden-nav{
     transform:translateX(-180px)
 }
