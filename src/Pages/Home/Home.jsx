@@ -1,7 +1,8 @@
 import '/src/Pages/Home/Home.css'
-import callAPI from "../../Components/CallAPI";
+import callAPI from "../../Components/API/CallAPI";
 import MovieSquare from '../../Components/MovieSquare/MovieSquare';
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 export default function Home(){
     const [currentPage, setCurrentPage] = useState(1);
     const [fetching, setFetching] = useState(true);
@@ -21,9 +22,7 @@ export default function Home(){
         <div id="home-main">
             {fetching && <div className='loading-cont'>Loading...</div>}
             {!fetching && (
-                movieArr.map(movie=>{
-                    return <MovieSquare key={movie.id} movie = {movie}/>
-                })
+                movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie = {movie}/></Link>)
             )}
         </div>
     )

@@ -4,6 +4,7 @@ import Home from "./Pages/Home/Home";
 import Mylists from '/src/Pages/Mylist/Mylists.jsx';
 import Watchlist from "./Pages/Watchlist/Watchlist";
 import Favorites from '/src/Pages/Favorites/Favorites.jsx';
+import MoviePage from "./Pages/MoviePage/MoviePage";
 import Popular from '/src/Pages/Popular/Popular.jsx';
 import Random from "./Pages/Random/Random";
 import ironflixLogo from '/src/assets/ironflix-logo.png'
@@ -22,6 +23,7 @@ function App() {
       <Route path="/favorites" element={<Favorites />}/>
       <Route path="/popular" element={<Popular />}/>
       <Route path="/random" element={<Random />}/>
+      <Route path="/:movieId" element={<MoviePage />}/>
     </Routes>
     </div>
 

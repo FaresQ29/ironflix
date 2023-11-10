@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import '/src/Components/Navbar/Navbar.css'
 export default function Navbar(){
-
+    const navRef = useRef(null)
     return (
-        <nav>
+        <nav ref={navRef}>
             <div id="inner-nav">
                 <div id="nav-links">
                     <Link to="/">Home</Link>
@@ -17,7 +17,7 @@ export default function Navbar(){
                     <Link to="/random">Random</Link>
                 </div>
             
-            <Navhandle />
+            <Navhandle navElem = {navRef} />
             <ThemePicker />
             </div>
         </nav>
@@ -43,12 +43,32 @@ function ThemePicker(){
 
 
 
-function Navhandle(){
-    const [navShown, setNavShown] = useState(true)
+function Navhandle({navElem}){
+
+    const [navShown, setNavShown] = useState(()=>{
+        const storageVal = localStorage.getItem("hidden-nav");
+        return true
+
+    })
+    function showHideNav(){
+
+    }
+    useEffect(()=>{
+        console.log(navElem);
+    }, [])
 
     function handleFunc(e){
-        const nav = e.target.parentElement.parentElement;
-        !navShown ? nav.classList.remove("hidden-nav") :  nav.classList.add("hidden-nav")
+        const nav = e.target.parentElement.parentElement
+        console.log(nav);
+        if(!navShown){
+            nav.classList.remove("hidden-nav")
+            localStorage.setItem("nav-hidden", false)
+        }
+        else{
+            nav.classList.add("hidden-nav")
+            localStorage.setItem("nav-hidden", true)
+
+        }
         setNavShown(prev => !prev)
     }
     return (
