@@ -67,12 +67,37 @@ form input{
 
 }  
 .form-btn-div{
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
+    position: relative;
     gap: 5px;
 }
+
 form button{
     padding: 5px;
     width: 40%;
+}
+.error-message{
+    position: absolute;
+    width: fit-content;
+    top: -21px;
+    color: rgb(171, 1, 1);
+    opacity: 1;
+    animation: errorMsgAnim 0.7s linear infinite;
+}
+
+@keyframes errorMsgAnim {
+    0%{opacity: 1;}
+    70%{opacity: 0.5;}
+    100%{opacity: 1;}
+}
+
+#logged-in-msg{
+    color: white;
+}
+
+.logged-in-div{
+    display: flex;
+    flex-direction: column;
 }

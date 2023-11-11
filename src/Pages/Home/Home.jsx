@@ -31,7 +31,6 @@ export default function Home(){
     }, [])
     function loadMore(){
         makeMovieCall()
-
     }
 
 

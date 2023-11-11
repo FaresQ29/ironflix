@@ -8,6 +8,9 @@ import MoviePage from "./Pages/MoviePage/MoviePage";
 import Popular from '/src/Pages/Popular/Popular.jsx';
 import Random from "./Pages/Random/Random";
 import Header from "./Components/Header/Header";
+
+
+
 function App() {
 
 
