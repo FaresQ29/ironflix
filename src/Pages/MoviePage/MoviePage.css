@@ -239,6 +239,7 @@
 .form-div{
     display: grid;
     grid-template-columns: 1fr 2fr;
+    
 }
 .form-div input, .form-div textarea{
     text-align: start;
@@ -248,6 +249,7 @@
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.197);
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.483);
 }
 .form-div textarea{
     resize: none;
@@ -264,7 +266,10 @@
 .tab-display form button:hover{
     background-color: rgba(255, 255, 255, 0.067);
 }
-
+.tab-display:has(.comment-history-div, .detail-box){
+    overflow:visible;
+    height: fit-content;
+}
 .comment-history-div{
     margin-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.107);
@@ -279,11 +284,13 @@
 
 }
 
-.comment-box{
+.comment-box:not(:has(.edit-box)){
     border-bottom: 1px solid rgba(255, 255, 255, 0.148);
     padding: 15px 0px;
     display: grid;
     justify-content: space-between;
+
+    
 }
 .comment-box h3{
   grid-column: 1 / 2;
@@ -331,21 +338,31 @@
   
 }
 .edit-box{
-
+    margin: 10px 0px;
     width: 100%;
     display: flex;
     flex-direction: column;
- 
-   
-  
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.59) !important;
 }
 .edit-box input{
+    padding: 10px;
     width: 100%;
-
+    text-align: start;
 
 }
-
+.edit-box > div{
+    display: flex;
+    gap:20px;
+}
 .edit-box textarea{
+    padding: 10px;
     resize: none;
     width: 100%;
+    height: 100px;
+}
+
+.edit-box  button{
+    width: 200px;
 }

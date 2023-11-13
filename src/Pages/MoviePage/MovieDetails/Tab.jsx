@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import noImg from '/src/assets/no-img.png'
 import Comments from "./CommentBox";
+import { getCommentID, getComments } from "../../../Components/LocalAPI/CommentApi";
 export default function Tab({movie, credits, loggedUser}){
     const [currentTab, setCurrentTab] = useState(1);
-    function handleTab(val){
-        setCurrentTab(val)
+    const [comments, setComments] = useState("");
+    function handleTab(val){setCurrentTab(val)}
+    async function updateComments(){
+        const comments = await getCommentID(movie.id)
+        setComments(comments.userComments);
     }
+
 
     return(
         <div className="movie-tab-container">

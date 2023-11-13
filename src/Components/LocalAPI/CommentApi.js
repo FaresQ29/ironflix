@@ -19,6 +19,12 @@ export async function delComment(commentId, movieId){
     const newObj = {...movieObj, userComments : removed};
     await axios.put(APIurl + "/"+ movieId, newObj);
 }
+export async function editComment(movieId, obj){
+    const movieObj = await getCommentID(movieId)
+    await axios.put(APIurl + "/"+ movieId,obj);
+}
+
+
 export async function writeCommentsNew(obj){
     await axios.post(APIurl, obj);
 }

@@ -19,7 +19,7 @@ function App() {
     <>
     <Header loggedUser={loggedUser} setUser={setUser}/>
     <Navbar />
-    <div id="main-container" onClick={console.log(loggedUser)}>
+    <div id="main-container">
     <Routes>
       <Route path="/" element={<Home loggedUser={loggedUser}/>}/>
       <Route path="/watchlist" element={<Watchlist />}/>
