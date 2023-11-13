@@ -239,7 +239,7 @@
 .form-div{
     display: grid;
     grid-template-columns: 1fr 2fr;
-    
+
 }
 .form-div input, .form-div textarea{
     text-align: start;
@@ -366,3 +366,4 @@
 .edit-box  button{
     width: 200px;
 }
+

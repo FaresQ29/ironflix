@@ -22,7 +22,7 @@ function App() {
     <div id="main-container">
     <Routes>
       <Route path="/" element={<Home loggedUser={loggedUser}/>}/>
-      <Route path="/watchlist" element={<Watchlist />}/>
+      <Route path="/watchlist" element={<Watchlist  loggedUser={loggedUser}/>}/>
       <Route path="/mylists" element={<Mylists />}/>
       <Route path="/favorites" element={<Favorites />}/>
       <Route path="/popular" element={<Popular />}/>
