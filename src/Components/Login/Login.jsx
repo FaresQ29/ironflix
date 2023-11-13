@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { readLocal, writeLocal } from "../LocalAPI/LocalApi";
-export default function Login(){
+export default function Login({userFunctions}){
+    const {loggedUser, setUser } = userFunctions;
     const [logStatus, setLogStatus] = useState(false)
     const [showModal, setShowModal] = useState(false)
-    const [loggedUser, setLoggedUser] = useState(null);
 
     function displayModal(bool){setShowModal(bool)}
     function logFunc(bool){
         setLogStatus(bool)
-        if(!bool){setLoggedUser(null)}
+        if(!bool){setUser(null)}
     }
-    function setUser(val){setLoggedUser(val)}
+
     return(
         <>
             {showModal && (
@@ -20,7 +20,7 @@ export default function Login(){
                 <button onClick={()=>displayModal(true)}>Login/register</button>
             )}
             {logStatus && (
-                <LoggedInDiv userName={loggedUser.loggedUser} logFunc={logFunc}/>
+                <LoggedInDiv userName={loggedUser.username} logFunc={logFunc}/>
             )}
         </>
     )
@@ -65,7 +65,7 @@ function LogInModal({displayModal, logFunc, setUser}){
         else{
             if(formData.password === foundUser[0].password){
                 logFunc(true)
-                setUser({loggedUser: formData.username, id:foundUser[0].id })
+                setUser(foundUser[0])
                 displayModal(false)
             }
             else{
@@ -84,6 +84,7 @@ function LogInModal({displayModal, logFunc, setUser}){
             return false
         }
         const localUsers = await readLocal()
+        
         const checkForUser = localUsers.every(user=>user.username !==formData.username)
         if(checkForUser===false && fromReg){
             errorHandler("Username already exists")
@@ -99,7 +100,7 @@ function LogInModal({displayModal, logFunc, setUser}){
         writeLocal(newObj)
         displayModal(false)
         logFunc(true)
-        setUser({loggedUser: formData.username, id:newObj["id"] })
+        setUser(newObj)
     }
     return (
         <div id="login-modal" onClick={e=>e.target.id==="login-modal" && displayModal(false)}>

@@ -3,7 +3,8 @@ import callAPI from "../../Components/API/CallAPI";
 import MovieSquare from '../../Components/MovieSquare/MovieSquare';
 import { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
-export default function Home(){
+export default function Home({loggedUser}){
+
     const [currentPage, setCurrentPage] = useState(1);
     const [fetching, setFetching] = useState(true);
     const [movieArr, setMovieArr] = useState([]);
@@ -33,13 +34,11 @@ export default function Home(){
         makeMovieCall()
     }
 
-
     return (
-
             <div id="home-main" ref={movieDiv}>
                 {fetching && <div className='loading-cont'>Loading...</div>}
                 {!fetching && (
-                    movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie = {movie}/></Link>)
+                    movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie={movie} loggedUser={loggedUser}/></Link>)
                 )}
                 {!fetching && <button id="load-more-btn-home" onClick={()=>{loadMore()}}>Load more movies</button>}
                 

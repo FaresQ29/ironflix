@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600,900&family=Roboto:wght@300;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -13,13 +15,14 @@ body{
 }
 
 nav{
+    font-family: 'Montserrat', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
     width: 200px;
     height: 100%;
-    background-color: rgba(251, 251, 251, 1);
     z-index: 10;
+
 }
 
 #main-container{

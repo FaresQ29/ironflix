@@ -4,7 +4,6 @@
     color: white;
     transition: transform 0.2s linear;
     cursor: pointer;
-
     
 }
 .movie-square:hover{
@@ -13,13 +12,11 @@
 
 
 }
-.movie-square:active{
-    transform: scale(1);
 
-}
 .movie-square img{
     width: 200px;
     border-radius: 10px;
+    -webkit-user-drag:none;
     
 }
 .movie-square-main-div{
@@ -52,6 +49,28 @@
   
 }
 
+.card-icon-div{
+    position: relative;
+    transition: transform 0.15s linear;
+}
+.card-icon-div span{
+    position: absolute;
+    top: -4px;
+    left: 2px;
+    font-size: 1.5rem;
+    color: rgb(34, 255, 0, 0.4);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
 .movie-square-inner-div img{
     width: 20px;
+
+
+}
+
+.card-icon-div:hover{
+    transform: scale(1.2);
+}
+.card-icon-div:active{
+    transform: scale(1);
+
 }

@@ -6,9 +6,14 @@ export async function readLocal(){
 }
 
 export async function writeLocal(obj){
+
     const res = await axios.post(APIurl, obj);
     console.log(res.data);
-    // console.log(obj);
-    // await axios.post(APIurl, obj);
     
+}
+
+export async function updateStatus(user){
+
+    const res = await axios.put(`${APIurl}/${user.id}`, user);
+
 }

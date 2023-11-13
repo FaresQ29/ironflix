@@ -3,11 +3,11 @@ import Searchbar from '../Searchbar/Searchbar';
 import Login from '../Login/Login';
 
 
-export default function Header(){
+export default function Header(userFunctions){
     return (
         <div id="header">
             <Searchbar />
-            <Login />
+            <Login userFunctions={userFunctions}/>
         </div>
     )
 }

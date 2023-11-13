@@ -1,6 +1,8 @@
 nav{
     transition: transform 0.3s linear;
     position: relative;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
 }
 #main-logo{
     position: absolute;
@@ -8,6 +10,7 @@ nav{
     top: 12px;
     -webkit-user-drag: none;
     width: 150px;
+    display: none;
 }
 @media screen and (max-width: 749px) {
     #main-logo{
@@ -22,20 +25,28 @@ nav{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: start;
     padding: 20% 0;
+    background-color: rgba(255, 255, 255, 0.376);
 }
 #nav-links{
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
+    width: 90%;
+    text-align: center;
 }
 nav a{
+    background-color: rgba(0, 2, 54, 0.108);
+    width: 100%;
     text-decoration: none;
-    color: black;
+    color: rgb(171, 171, 171);
     font-size: 1.3rem;
+    padding: 10px 0px;
+
 }
 #nav-handle{
     position: absolute;
