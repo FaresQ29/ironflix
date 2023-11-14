@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 
 import '/src/Components/Navbar/Navbar.css'
 export default function Navbar(){
+
     const navRef = useRef(null)
     return (
         <nav ref={navRef}>

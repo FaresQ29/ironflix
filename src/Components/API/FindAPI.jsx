@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 
-
 export default async function findAPI(id){
   const url =  `https://api.themoviedb.org/3/movie/${id}?api_key=75e2b8c6a97ca8659ea8a7d1cbf739ee`;
     const response = await axios.get(url, {

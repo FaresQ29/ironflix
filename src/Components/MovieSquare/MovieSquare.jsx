@@ -4,7 +4,7 @@ import favIcon from '/src/assets/fav-icon.png';
 import listIcon from '/src/assets/list-icon.png';
 import watchedIcon from '/src/assets/watched-icon.png';
 import { updateStatus } from '../LocalAPI/LocalApi';
-export default function MovieSquare({movie, loggedUser}){
+export default function MovieSquare({movie, loggedUser, renderList}){
     const [optionsVis, setOptionsVis] = useState(false);
     const [isChecked, setIsChecked] = useState({favorites: false, watchlists: false})
     const imgPath = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
@@ -22,7 +22,9 @@ export default function MovieSquare({movie, loggedUser}){
             setIsChecked(prev=>{ return {...prev, [type]: bool} })
         }
     }
-
+    function showList(){
+        renderList(true, movie)
+    }
     function statusCheck(type){
         if(!loggedUser){
             userNotLogged()
@@ -62,20 +64,22 @@ export default function MovieSquare({movie, loggedUser}){
             {optionsVis && (
                 <div className="movie-square-main-div">
                     <p>{movie.title}</p>
-                    <div className="movie-square-inner-div" onClick={e=>e.preventDefault()}>
-                        <div className="card-icon-div" onClick={()=>statusCheck("favorites")}>
-                            {isChecked.favorites && <span>✓</span>}
-                            <img src={favIcon}/>
+                        {loggedUser && (
+                        <div className="movie-square-inner-div" onClick={e=>e.preventDefault()}>
+                            <div className="card-icon-div" onClick={()=>statusCheck("favorites")}>
+                                {isChecked.favorites && <span>✓</span>}
+                                <img src={favIcon}/>
+                            </div>
+                            <div className="card-icon-div" onClick={showList}> 
+                                <img src={listIcon}/>
+                            </div>
+                            <div className="card-icon-div" onClick={()=>statusCheck("watchlists")}>
+                                {isChecked.watchlists && <span>✓</span>}    
+                                <img src={watchedIcon}/>
+                            </div>
                         </div>
-                        <div className="card-icon-div" > 
-                            <img src={listIcon}/>
-                        </div>
-                        <div className="card-icon-div" onClick={()=>statusCheck("watchlists")}>
-                            {isChecked.watchlists && <span>✓</span>}    
-                            <img src={watchedIcon}/>
-                        </div>
+                    )}
 
-                    </div>
                 </div>
             )}
         </div>

@@ -13,7 +13,7 @@ import { useState } from "react";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
-  
+
   function setUser(val){setLoggedUser(val)}
   return (
     <>

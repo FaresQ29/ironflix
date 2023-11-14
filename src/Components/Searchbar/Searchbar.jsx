@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import apiSearch from "../API/SearchAPI";
 import noImg from '/src/assets/no-img.png'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 export default function Searchbar(){
     const [results, setResults] = useState("")
     const [fetching, setFetching] = useState(true)
     const [inputVal, setInputVal] = useState("")
+    const [searchId, setSearchId] = useState(null)
     const navigate = useNavigate()
  
+    useEffect(()=>{
 
+    }, [])
     async function handleInput(e){
         setFetching(true)
         setInputVal(e.target.value)
@@ -18,10 +21,12 @@ export default function Searchbar(){
         setFetching(false)
     }
 
+
+
     function handleClick(id){
         setInputVal("");
         navigate(`/${id}`)
-
+        setSearchId(id)
     }
     return(
         <div className="search-container">

@@ -1,0 +1,196 @@
+.list-window{
+    position: fixed;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.348);
+    z-index: 99;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    top: 30%;
+    border: 1px solid rgba(0, 0, 0, 0.385);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 20px;
+}
+
+.list-window h2{
+    text-align: center;
+    color: rgb(254, 254, 254);
+    user-select: none;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
+    padding: 15px 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.list-window h2 span{
+
+
+}
+
+.list-window-dropdown{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 50%;
+    user-select: none;
+}
+.drop-title{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 5px 0px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.26);
+    z-index: 20;
+
+}
+.list-window-dropdown div{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.chosen-drop{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+.chosen-drop >  span{
+    font-weight: 100;
+}
+.drop-container{
+    top: 32px;
+    transition: all 0.2s linear;
+    position: absolute;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.919);
+    z-index: -1;
+    height: 0px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.drop-container-open{
+    pointer-events:all;
+    visibility:visible;
+    z-index: 1;
+    height: fit-content;
+    padding: 10px;
+    overflow:visible;
+}
+.list-item-outer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+.list-item{
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    background: rgba(255, 255, 255, 0.172);
+    transition: all 0.2s linear;
+}
+.list-preview{
+    position: absolute;
+    right: -150px;
+    border-left: none;
+    top: 0px;
+    background-color: white;
+    width: 150px;
+    border: 1px solid black;
+    padding: 15px;
+    text-align: center;
+
+}
+.list-preview p{
+    padding: 5px 0px;
+    font-weight: 900;
+}
+.movie-preview-list:nth-child(2){
+    border-top:1px solid rgba(0, 0, 0, 0.491);
+    
+}
+.movie-preview-list{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.491);
+    padding: 5px 0px;
+
+}
+.list-item:hover{
+    background-color: rgba(0, 0, 0, 0.618);
+    color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+.list-item:last-child{
+    border: none;
+}
+
+.create-list-separator{
+    width: 80%;
+    position: relative;
+    display: flex;
+    gap: 3px;
+    z-index: -1;
+}
+.create-list-separator div{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.39);
+    width: 100%;
+    height: 10px;
+}
+
+.create-list-separator span{
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add-new-list-form{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+.add-new-list-form input{
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+.add-new-list-form input::placeholder{
+    color: rgba(0, 0, 0, 0.206);
+}
+
+.add-new-list-form button{
+    cursor: pointer;
+}
+
+.drop-final-button{
+    padding: 10px 5px;
+}
+
+.disable-btn{
+    cursor:not-allowed;
+    opacity: 0.5;
+    user-select: none;
+}

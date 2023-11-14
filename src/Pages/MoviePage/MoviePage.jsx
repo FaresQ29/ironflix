@@ -22,7 +22,7 @@ export default function MoviePage({loggedUser}){
             catch(error){console.log(error);}
         }
         findMovie()
-    }, [])
+    }, [movieId])
 
     return(
         <div id="movie-page-container">
