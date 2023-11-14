@@ -7,6 +7,5 @@ export async function readUserLists(id){
 
 export async function writeUserList(userId, obj){
     await axios.put("http://localhost:5005/users/" + userId, obj)
-
-   
 }
+

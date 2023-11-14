@@ -41,7 +41,7 @@ export default function Home({loggedUser}){
 
     return (
             <div id="home-main" ref={movieDiv}>
-                {isListMenu.bool && <CreateList clickedFilm = {isListMenu.currentMovie} user={loggedUser} />}
+                {isListMenu.bool && <CreateList clickedFilm = {isListMenu.currentMovie} user={loggedUser} renderListMenu={renderListMenu}/>}
                 {fetching && <div className='loading-cont'>Loading...</div>}
                 {!fetching && (
                     movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie={movie} loggedUser={loggedUser} renderList = {renderListMenu}/></Link>)

@@ -1,8 +1,8 @@
 import '/src/Components/Lists/list.css';
-import { readUserLists, writeUserList } from '../LocalAPI/ListsApi';
+import { readUserLists, writeUserList} from '../LocalAPI/ListsApi';
 import { useState, useEffect } from 'react';
 import findAPI from '/src/Components/API/FindAPI.jsx'
-export default function CreateList({clickedFilm, user}){
+export default function CreateList({clickedFilm, user, renderListMenu}){
     const [currentList, setCurrentList] = useState(null)
     const [dropChoice, setDropChoice] = useState(null)
     const [choiceId, setChoiceId] = useState(null)
@@ -32,26 +32,43 @@ export default function CreateList({clickedFilm, user}){
     function closeDrop(e){
         if(e.target.closest(".list-window-dropdown")===null){setIsOpen(false)}
     }
+    function closeModal(e){
+        if(!e.target.closest(".list-window")){
+            renderListMenu(false, null)
+        }
+    }
     function addMovieToList(){
+        if(choiceId===null) return
+        const addedList = currentList.map(list=>{
+            if(list.listId===choiceId){
+                list.movies.push(clickedFilm.id)
+                return list
+            }
+            return list
+        })
+        user.lists = addedList
 
+        writeUserList(user.id, user)
     }
     return (
-        <div className="list-window" onClick={e=>closeDrop(e)}>
-            <h2>Add <span>{title}</span> to a list</h2>
-            {!fetching && (
-                <>
-                    <ListDropdown movList = {currentList} setChoice={setChoice} isOpen={isOpen} handleDrop={handleDrop} dropChoice={dropChoice}/>
-                    {dropChoice && (
-                        <p className="chosen-drop">Chosen list: <span>{dropChoice}</span></p>
-                    )}
-                    <div className="create-list-separator"><div></div><span>OR</span><div></div></div>
-                    <CreateNewList user={user} addToList={addToList}/>
-                    <div className="create-list-separator"><div></div><div></div></div>
-                    <button className={`drop-final-button ${btnClass}`} onClick={addMovieToList}>
-                        {choiceId===null ? "Pick a list" :`Save to "${dropChoice}"`}
-                    </button>
-                </>
-            )}
+        <div className="bg-list" onClick={closeModal}>
+            <div className="list-window" onClick={e=>closeDrop(e)}>
+                <h2>Add <span>{title}</span> to a list</h2>
+                {!fetching && (
+                    <>
+                        <ListDropdown movList = {currentList} setChoice={setChoice} isOpen={isOpen} handleDrop={handleDrop} dropChoice={dropChoice}/>
+                        {dropChoice && (
+                            <p className="chosen-drop">Chosen list: <span>{dropChoice}</span></p>
+                        )}
+                        <div className="create-list-separator"><div></div><span>OR</span><div></div></div>
+                        <CreateNewList user={user} addToList={addToList}/>
+                        <div className="create-list-separator"><div></div><div></div></div>
+                        <button className={`drop-final-button ${btnClass}`} onClick={addMovieToList}>
+                            {choiceId===null ? "Pick a list" :`Save to "${dropChoice}"`}
+                        </button>
+                    </>
+                )}
+            </div>
         </div>
     )
 }
@@ -79,13 +96,10 @@ function CreateNewList({user, addToList, text}){
     )
 }
 
-function ListDropdown({movList, setChoice, isOpen, handleDrop, dropChoice}){
+function ListDropdown({movList, setChoice, isOpen, handleDrop}){
     const listText = movList.length===0 ? "No lists yet" : `Choose list (${movList.length} items)`
-
     const dropClass = isOpen ? "drop-container-open" : "";
-    function closeDrop(){
-        
-    }
+
     return (
         <>
             <div className='list-window-dropdown'>
