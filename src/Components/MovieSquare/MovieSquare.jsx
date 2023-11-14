@@ -67,7 +67,7 @@ export default function MovieSquare({movie, loggedUser}){
                             {isChecked.favorites && <span>✓</span>}
                             <img src={favIcon}/>
                         </div>
-                        <div className="card-icon-div"> 
+                        <div className="card-icon-div" > 
                             <img src={listIcon}/>
                         </div>
                         <div className="card-icon-div" onClick={()=>statusCheck("watchlists")}>
