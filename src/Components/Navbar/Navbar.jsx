@@ -9,7 +9,6 @@ export default function Navbar(){
     const navRef = useRef(null)
     return (
         <nav ref={navRef}>
-            <img src={ironFlixLogo} id="main-logo"/>
             <div id="inner-nav">
                 <div id="nav-links">
                     <Link to="/">Home</Link>

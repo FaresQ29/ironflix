@@ -6,14 +6,6 @@ nav{
     z-index: 1000;
 
 }
-#main-logo{
-    position: absolute;
-    right: -150px;
-    top: 12px;
-    -webkit-user-drag: none;
-    width: 150px;
-    display: none;
-}
 @media screen and (max-width: 749px) {
     #main-logo{
        top: 60px;
