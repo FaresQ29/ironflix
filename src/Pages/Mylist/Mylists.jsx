@@ -5,7 +5,9 @@ import findAPI from '../../Components/API/FindAPI';
 import addIcon from '/src/assets/add-icon.png';
 import editIcon from '/src/assets/edit-icon.png';
 import delIcon from '/src/assets/delete-icon.png'
+import checkmark from '/src/assets/checkmark.png';
 const imgPath = "https://image.tmdb.org/t/p/w500";
+
 
 export default function Mylists({loggedUser}){
     const [deleting, setDeleting] = useState(false)
@@ -35,6 +37,7 @@ export default function Mylists({loggedUser}){
 
 function ListCover({list, reRender, user}){
     const [editMode, setEditMode] = useState(false)
+    const [editInput, setEditInput] = useState(list.listName);
     function deleteList(){
         const removeList = user.lists.filter(elem=>{
             return elem.listId!== list.listId
@@ -42,20 +45,43 @@ function ListCover({list, reRender, user}){
         user.lists = removeList
         reRender()
     }
+    async function handleEdit(e){
+        e.preventDefault()
+        if(editInput.length===0) return
+        user.lists.map(elem=>{
+            if(elem.listId === list.listId){
+                elem.listName = editInput
+                return elem
+            }
+            return elem
+        })
+        writeUserList(user.id, user)
+        setEditMode(false)
+        
+    }
     return (
             <div className='list-card-face'>
                 <div className="list-title-div">
-                    <p>{list.listName}</p>
-                    <div className='edit-list-face'><img src={editIcon}/></div>
-                    <div className='del-list-face' onClick={deleteList}><img src={delIcon}/></div>
+                    {!editMode && (
+                        <>
+                            <p>{list.listName}</p>
+                            <div className='edit-list-face' onClick={()=>setEditMode(true)}><img src={editIcon}/></div>
+                            <div className='del-list-face' onClick={deleteList}><img src={delIcon}/></div>
+                        </>
+                    )}
+                    {editMode && (
+                        <form>
+                            <input type="text" placeholder={list.listName} value={editInput} onChange={e=>setEditInput(e.target.value)}/>
+                            <button onClick={handleEdit}><img src={checkmark}/></button>
+                        </form>
+                    )}
+
 
                 </div>
                 <div className="list-card-face-info">
                     {list.movies.length===0 && ( <h1 className="list-card-empty">List is empty...</h1> )}
                     {list.movies.length > 0 && (
-                        list.movies.map((mov, i)=>{
-                            return <ListInfo movId={mov} list={list} key={i} reRender={reRender}/>
-                        })
+                        list.movies.map((mov, i)=><ListInfo movId={mov} list={list} key={i} reRender={reRender}/>)
                     )}
                 </div>
             </div> 

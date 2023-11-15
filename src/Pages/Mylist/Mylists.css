@@ -150,6 +150,31 @@ font-family: 'Roboto', sans-serif;
     padding-bottom: 3px;
     width: 100%;
 }
+
+.list-title-div form{
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-items: center;
+    align-items: center;
+
+}
+.list-title-div form input{
+    background: none;
+    outline: rgba(0, 0, 255, 0.529);
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.list-title-div form button{
+    background: none;
+    filter: hue-rotate(190deg);
+    border: none;
+    opacity: 0.6;
+}
+.list-title-div form button{
+    margin-top: 5px;
+}
 .list-card-empty{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;

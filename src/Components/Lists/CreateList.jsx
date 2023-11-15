@@ -49,7 +49,6 @@ export default function CreateList({clickedFilm, user, renderListMenu}){
         })
         user.lists = addedList
         writeUserList(user.id, user)
-        renderListMenu(false, null)
     }
     return (
         <div className="bg-list" onClick={closeModal}>
@@ -60,7 +59,8 @@ export default function CreateList({clickedFilm, user, renderListMenu}){
                 {!fetching && (
                     <>
                         <ListDropdown movList = {currentList} setChoice={setChoice} isOpen={isOpen} handleDrop={handleDrop} dropChoice={dropChoice}  movieId={clickedFilm.id}/>
-                        {dropChoice && (<p className="chosen-drop">Chosen list: <span>{dropChoice}</span></p>)}
+                        {dropChoice && (<p className="chosen-drop">Chosen list: <span>{dropChoice}</span></p>
+                        )}
                         <div className="create-list-separator"><div></div><span>OR</span><div></div></div>
                         <CreateNewList user={user} addToList={addToList}/>
                         <div className="create-list-separator"><div></div><div></div></div>
