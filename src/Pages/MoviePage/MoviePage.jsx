@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import findAPI from '../../Components/API/FindAPI';
 import creditAPI from '../../Components/API/CreditAPI';
 import Tab from './MovieDetails/Tab';
-const imgPath = "https://image.tmdb.org/t/p/w500"
+const imgPath = "https://image.tmdb.org/t/p/w500";
 export default function MoviePage({loggedUser}){
     const [movie, setMovie] = useState(null)
     const [credits, setCredits] = useState(null)

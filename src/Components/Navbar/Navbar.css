@@ -3,6 +3,8 @@ nav{
     position: relative;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
+    z-index: 1000;
+
 }
 #main-logo{
     position: absolute;
@@ -29,6 +31,7 @@ nav{
     align-items: start;
     padding: 20% 0;
     background-color: rgba(255, 255, 255, 0.376);
+
 }
 #nav-links{
     text-align: center;

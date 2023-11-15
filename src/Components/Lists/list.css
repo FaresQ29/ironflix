@@ -8,6 +8,7 @@
     left: 0;
     z-index: 100;
 }
+
 .list-window{
     position: fixed;
     width: 500px;
@@ -25,7 +26,20 @@
     gap: 10px;
     padding: 30px 20px;
 }
-
+#bg-list-close{
+    position: fixed;
+    color: rgb(255, 255, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 5px;
+    right: 30px;
+    font-size: 3rem;
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.13s linear;
+}
+#bg-list-close:hover{
+    transform: scale(1.25);
+}
 .list-window h2{
     text-align: center;
     color: rgb(254, 254, 254);
@@ -40,7 +54,7 @@
 
 .list-window h2 span{
 
-
+    font-style: italic;
 }
 
 .list-window-dropdown{
@@ -116,6 +130,17 @@
     border-bottom: 1px solid black;
     background: rgba(255, 255, 255, 0.172);
     transition: all 0.2s linear;
+    position: relative;
+}
+.movie-in-list-check{
+
+}
+.list-item img{
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 20px;
+
 }
 .list-preview{
     position: absolute;

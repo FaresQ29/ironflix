@@ -1,4 +1,4 @@
-const APIurl = "http://localhost:5005/users";
+const APIurl = "https://ironflix-mock-database.onrender.com/users";
 import axios from "axios";
 export async function readLocal(){
     const res = await axios.get(APIurl);

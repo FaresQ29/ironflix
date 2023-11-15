@@ -2,6 +2,7 @@ import '/src/Components/Lists/list.css';
 import { readUserLists, writeUserList} from '../LocalAPI/ListsApi';
 import { useState, useEffect } from 'react';
 import findAPI from '/src/Components/API/FindAPI.jsx'
+import checkmark from '/src/assets/checkmark.png'
 export default function CreateList({clickedFilm, user, renderListMenu}){
     const [currentList, setCurrentList] = useState(null)
     const [dropChoice, setDropChoice] = useState(null)
@@ -47,16 +48,16 @@ export default function CreateList({clickedFilm, user, renderListMenu}){
             return list
         })
         user.lists = addedList
-
         writeUserList(user.id, user)
     }
     return (
         <div className="bg-list" onClick={closeModal}>
+            <span id="bg-list-close">X</span>
             <div className="list-window" onClick={e=>closeDrop(e)}>
-                <h2>Add <span>{title}</span> to a list</h2>
+                <h2>Add '<span>{title}</span>' to a list</h2>
                 {!fetching && (
                     <>
-                        <ListDropdown movList = {currentList} setChoice={setChoice} isOpen={isOpen} handleDrop={handleDrop} dropChoice={dropChoice}/>
+                        <ListDropdown movList = {currentList} setChoice={setChoice} isOpen={isOpen} handleDrop={handleDrop} dropChoice={dropChoice}  movieId={clickedFilm.id}/>
                         {dropChoice && (
                             <p className="chosen-drop">Chosen list: <span>{dropChoice}</span></p>
                         )}
@@ -96,7 +97,7 @@ function CreateNewList({user, addToList, text}){
     )
 }
 
-function ListDropdown({movList, setChoice, isOpen, handleDrop}){
+function ListDropdown({movList, setChoice, isOpen, handleDrop, movieId}){
     const listText = movList.length===0 ? "No lists yet" : `Choose list (${movList.length} items)`
     const dropClass = isOpen ? "drop-container-open" : "";
 
@@ -106,7 +107,8 @@ function ListDropdown({movList, setChoice, isOpen, handleDrop}){
                     <div className="drop-title" onClick={handleDrop}>{listText}</div>
                         <div className={`drop-container ${dropClass}`}>
                             {movList.map((mov, i)=>{
-                                return <ListOption key={i} setChoice={setChoice} mov={mov}/>
+                                const isMovieInList = mov.movies.includes(movieId);
+                                return <ListOption key={i} setChoice={setChoice} mov={mov} isMovieInList={isMovieInList}/>
                             })}
                         </div>
             </div>
@@ -116,7 +118,7 @@ function ListDropdown({movList, setChoice, isOpen, handleDrop}){
 }
 
 
-function ListOption({mov, setChoice}){
+function ListOption({mov, setChoic, isMovieInList, setChoice}){
     const [isPreview, setIsPreview] = useState(false);
     const [prevItems, setPrevItems] = useState("");
     const movList = mov.movies;
@@ -124,8 +126,9 @@ function ListOption({mov, setChoice}){
     useEffect(()=>{
         async function getPrevItems(){
             const movTitlesArr=[]
-            const movTitles = mov.movies.forEach(async (movId)=>{
+             mov.movies.forEach(async (movId)=>{
                 const movObj = await findAPI(movId)
+
                 movTitlesArr.push(movObj.title)
             })
             setPrevItems(movTitlesArr)
@@ -138,9 +141,10 @@ function ListOption({mov, setChoice}){
                 onMouseEnter={()=>setIsPreview(true)}  
                 onMouseLeave={()=>setIsPreview(false)}
                 onClick={(e)=>setChoice(mov, e.target.textContent)}>
-
-                {mov.listName}
+                <p>{mov.listName}</p>    
+                {isMovieInList && (<img src={checkmark} />)}
             </div> 
+
             {isPreview && (
                 <div className="list-preview">
                     {movList.length===0 && ("List is empty")}
@@ -151,7 +155,6 @@ function ListOption({mov, setChoice}){
                             return <div key={i} className="movie-preview-list">{mov}</div>     
                         })}
                         </>
-
                     )}
                 </div>
             )}

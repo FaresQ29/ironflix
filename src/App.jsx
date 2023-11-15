@@ -23,7 +23,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home loggedUser={loggedUser}/>}/>
       <Route path="/watchlist" element={<Watchlist  loggedUser={loggedUser}/>}/>
-      <Route path="/mylists" element={<Mylists />}/>
+      <Route path="/mylists" element={<Mylists  loggedUser={loggedUser}/>}/>
       <Route path="/favorites" element={<Favorites />}/>
       <Route path="/popular" element={<Popular />}/>
       <Route path="/random" element={<Random/>}/>

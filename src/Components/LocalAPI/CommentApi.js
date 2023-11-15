@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const APIurl = "http://localhost:5005/comments";
+const APIurl = "https://ironflix-mock-database.onrender.com/comments";
 
 
 export async function getComments(){

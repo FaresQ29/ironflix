@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;600;900&display=swap');
+
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+*/
+#main-container:has(.my-lists-main){
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.my-lists-main:has(.log-in-msg){
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    color: white;
+    font-style: italic;
+    user-select: none;
+}
+
+.my-lists-main{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.add-new-list-div{
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.085);
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.1s linear transform, opacity;
+    user-select: none;
+    opacity: 0.7;
+    margin-bottom: 50px;
+}
+.add-new-list-div:hover{
+    opacity:1;
+    transform: scale(1.1);
+}
+.add-new-list-div:active{
+    transform: scale(1);
+
+}
+.add-new-list-div h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+}
+
+.add-new-list-div img{
+
+    width: 60px;
+    filter:invert(100);
+}
+
+
+/* ------------------------- */
+/* movie card face */
+.user-list-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px;
+
+}
+.list-card-face{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgba(255, 255, 255, 0.108);
+    user-select: none;
+    border-radius: 20px;
+
+}
+.list-title-div{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 3px;
+    width: 100%;
+}
+.list-card-empty{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+.list-title-div p{
+    font-weight: 600;
+    color: rgb(191, 191, 191);
+}
+.list-title-div img{
+    width: 20px;
+    transition: transform 0.15s linear;
+    filter: invert(100%);
+}
+.list-title-div img:hover{
+    transform: scale(1.2);
+}
+.list-title-div > div{
+    position: relative;
+    cursor: pointer;
+}
+.list-title-div > div::after{
+    content: "Edit list name";
+    font-size: 0.8rem;
+    top: 12px;
+    left: 25px;
+    white-space: nowrap;
+    position: absolute;
+    color: azure;
+    transition: all 0.3s linear;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+.list-title-div >div:hover::after{
+    opacity: 0.8;
+
+}
