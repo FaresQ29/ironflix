@@ -26,7 +26,11 @@ export default function Mylists({loggedUser}){
                         return <ListCover key={i} list={list} reRender={reRender} user={loggedUser}/>
                     })}
                 </div>
-
+                </>
+            )}
+            {!loggedUser && (
+                <>
+                <h1>You must log in to create and edit lists...</h1>
                 </>
             )}
         </div>

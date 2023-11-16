@@ -1,10 +1,10 @@
 import '/src/Components/MovieSquare/MovieSquare.css';
 import { useEffect, useState } from 'react';
-import favIcon from '/src/assets/fav-icon.png';
 import listIcon from '/src/assets/list-icon.png';
 import watchedIcon from '/src/assets/watched-icon.png';
 import { updateStatus } from '../LocalAPI/LocalApi';
 export default function MovieSquare({movie, loggedUser, renderList}){
+
     const [optionsVis, setOptionsVis] = useState(false);
     const [isChecked, setIsChecked] = useState({favorites: false, watchlists: false})
     const imgPath = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
@@ -44,7 +44,6 @@ export default function MovieSquare({movie, loggedUser, renderList}){
                 })
                 loggedUser[type].push(movie.id);
                 updateStatus(loggedUser)
-                console.log(loggedUser);
                 return;
             }
             else{

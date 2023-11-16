@@ -5,16 +5,14 @@ import { useState, useEffect, useRef } from "react";
 
 import '/src/Components/Navbar/Navbar.css'
 export default function Navbar(){
-
     const navRef = useRef(null)
     return (
         <nav ref={navRef}>
             <div id="inner-nav">
                 <div id="nav-links">
                     <Link to="/">Home</Link>
-                    <Link to="/watchlist">Watchlist</Link>
                     <Link to="/mylists">My Lists</Link>
-
+                    <Link to="/watchlist">Watchlist</Link>
                 </div>
             
             <Navhandle navElem = {navRef} />

@@ -4,6 +4,10 @@ export async function readLocal(){
     const res = await axios.get(APIurl);
     return res.data
 }
+export async function readLocalUser(id){
+    const res = await axios.get(APIurl + "/" + id);
+    return res.data
+}
 
 export async function writeLocal(obj){
 
