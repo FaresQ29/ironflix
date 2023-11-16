@@ -40,6 +40,8 @@ export default function Home({loggedUser}){
     }
 
     return (
+        <>
+            <h2 id="home-main-title">Current trending movies</h2>
             <div id="home-main" ref={movieDiv}>
                 {isListMenu.bool && <CreateList clickedFilm = {isListMenu.currentMovie} user={loggedUser} renderListMenu={renderListMenu}/>}
                 {fetching && <div className='loading-cont'>Loading...</div>}
@@ -47,8 +49,9 @@ export default function Home({loggedUser}){
                     movieArr.map(movie=><Link key={movie.id} to={`/${movie.id}`}><MovieSquare movie={movie} loggedUser={loggedUser} renderList = {renderListMenu}/></Link>)
                 )}
                 {!fetching && <button id="load-more-btn-home" onClick={()=>{loadMore()}}>Load more movies</button>}
-                
             </div>
+        </>
+
 
 
 

@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;900&display=swap');
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+*/
+
 #header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-left: 5%;
     margin-right: 5%;
-    height: 70px;
+    height: 80px;
+
 }
 #main-logo{
     margin-top: 10px;
@@ -59,7 +66,7 @@
     border-radius: 10px;
 }
 .search-results-div p{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     text-align: center;
    
@@ -77,6 +84,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 #login-square{
     position: relative;
@@ -90,7 +98,6 @@
     position: absolute;
     right: 10px;
     top: 5px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.3rem;
     cursor: pointer;
     user-select: none;
@@ -98,7 +105,7 @@
 form{
     display: flex;
     flex-direction: column;
-
+    font-family: 'Roboto', sans-serif;
 }
 form label{
     font-size: 1.3rem;
@@ -143,10 +150,29 @@ form button{
 }
 
 #logged-in-msg{
+
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .logged-in-div{
     display: flex;
     flex-direction: column;
+    gap: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.301);
+    padding: 5px 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 150px;
+    text-align: center;
+    margin-top: 20px;
+
+}
+#header button{
+    border: 2px solid rgb(219, 219, 219);
+    background-color: rgb(187, 210, 184);
+    padding: 3px;
 }

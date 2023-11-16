@@ -5,8 +5,7 @@ import MovieSquare from '../../Components/MovieSquare/MovieSquare';
 import { Link } from 'react-router-dom';
 export default function Watchlist({ loggedUser }) {
   const [movies, setMovies] = useState([]);
-  
-  const watchlist = loggedUser.watchlists;
+  const watchlist = loggedUser.watchlists
   const movieDiv = useRef(null);
   useEffect(() => {
     const fetchMovies = async () => {
@@ -26,7 +25,7 @@ export default function Watchlist({ loggedUser }) {
     // Call the function to fetch movies when the component mounts
     fetchMovies();
   }, [watchlist]); // Add watchlist as a dependency to re-run the effect when it changes
-  console.log(movies);
+
   return (
     <>
         {!loggedUser && (<h1 className="log-in-msg">Log in to view and modify your lists...</h1>)}

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;900&display=swap');
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+*/
 #main-container:has(#home-main){
     display: flex;
     justify-content: center;
@@ -15,8 +21,6 @@
     margin-top: 50px;
     width: 80%;
     overflow: scroll;
-    padding-top: 40px;
-
 
 }
 
@@ -33,4 +37,9 @@
     color: white;
     cursor: pointer;
 
+}
+
+#home-main-title{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
 }

@@ -8,11 +8,12 @@ export default function Header(userFunctions){
     function testing(){
         console.log(userFunctions.loggedUser)
         console.log("comments: ", userFunctions.comments);
+
     }
     
     return (
         <div id="header">
-            <img src={ironFlixLogo} id="main-logo" onClick={testing}/>
+            <Link to="/"><img src={ironFlixLogo} id="main-logo" onClick={testing}/></Link>
             <Searchbar />
             <Login userFunctions={userFunctions}/>
         </div>

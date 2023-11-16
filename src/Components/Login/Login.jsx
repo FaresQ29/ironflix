@@ -30,7 +30,7 @@ export default function Login({userFunctions}){
 function LoggedInDiv({userName, logFunc}){
     return (
         <div className="logged-in-div">
-            <p id="logged-in-msg">Welcome {userName}</p>
+            <p id="logged-in-msg">Welcome<br />{userName}</p>
             <button onClick={()=>logFunc(false)}>Log out</button>
         </div>
     )
