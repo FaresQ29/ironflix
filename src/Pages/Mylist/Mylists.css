@@ -40,7 +40,6 @@ font-family: 'Roboto', sans-serif;
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.085);
     gap: 5px;
-    cursor: pointer;
     transition: 0.1s linear transform, opacity;
     user-select: none;
     opacity: 0.7;
@@ -50,21 +49,58 @@ font-family: 'Roboto', sans-serif;
     opacity:1;
     transform: scale(1.1);
 }
-.add-new-list-div:active{
-    transform: scale(1);
-
+.add-new-list-div > button {
+    cursor: pointer;
 }
+
 .add-new-list-div h2{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
 }
 
 .add-new-list-div img{
-
+    cursor: pointer;
     width: 60px;
     filter:invert(100);
 }
+.add-new-list-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: all 0.3s linear;
+    height: 80px;
+    padding: 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.223);
+    border-left: none;
+    border-right: none;
 
+}
+.add-new-list-input-container-hidden{
+    overflow:hidden;
+    height: 0;
+    padding: 0px;
+}
+.add-new-list-input-container input{
+    text-align: center;
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    background: none;
+    color: white;
+    font-family: "Roboto";
+}
+
+.add-new-list-input-container button{
+    padding: 3px 0px;
+    font-family: "Montserrat";
+    background: none;
+    background-color: rgba(240, 248, 255, 0.201);
+    color: white;
+    border: 1px solid white;
+    padding: 5px 0px;
+    cursor: pointer;
+}
 
 /* ------------------------- */
 /* movie card face */

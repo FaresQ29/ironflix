@@ -8,7 +8,7 @@ export default function Comments({movieId, loggedUser}){
         <>
             {loggedUser && (
                 <>
-                    <CommentForm movieId={movieId} loggedUser={loggedUser}/>
+                    <CommentForm movieId={movieId} loggedUser={loggedUser} />
                 </>
             )}
             {!loggedUser && (<div className="comment-must-login">You must login or register to access comments...</div>)}
@@ -18,40 +18,51 @@ export default function Comments({movieId, loggedUser}){
 
 
 
+
 function CommentForm({movieId, loggedUser}){
     const [formData, setFormData] = useState({cName:"", cComment:""});
     const [fetching, setFetching] = useState(false)
-    function changeFetch(val){
-        setFetching(val)
-    }
-    
+    const [getCom, setGetCom] = useState(null)
+    function changeFetch(val){setFetching(val)}
     function handleForm(e){
         const {name, value} = e.target;
         setFormData(prevVal=>{return {...prevVal, [name]:value}})
     }
-
+    useEffect(()=>{
+       changeFetch(false)
+    }, [getCom])
     async function handleSubmit(e){
         e.preventDefault()
         setFetching(true)
         if(formData.cName.length > 0 && formData.cComment.length > 0){
-            const commentArr = await getComments()
-            if(commentArr.length===0){
-                const commentObj = createCommentObj(movieId, formData.cName, formData.cComment, loggedUser.id)
-                await writeCommentsNew(commentObj)
-            }
-            else{
-                const isMovie = commentArr.find(com=>com.id === movieId)
-               if(!isMovie){
+                const commentArr = await getComments()
+                if(commentArr.length===0){
                     const commentObj = createCommentObj(movieId, formData.cName, formData.cComment, loggedUser.id)
                     await writeCommentsNew(commentObj)
+                    setGetCom([commentObj])
                 }
                 else{
-                    const commentObj = await getCommentID(movieId);
-                    const userComments = commentObj.userComments
-                    userComments.push(createCommentObj(false, formData.cName, formData.cComment, loggedUser.id))
-                    await writeComments(commentObj, movieId)
+                   const isMovie = commentArr.find(com=>com.id === movieId)
+                   if(!isMovie){
+                        const commentObj = createCommentObj(movieId, formData.cName, formData.cComment, loggedUser.id)
+                        await writeCommentsNew(commentObj)
+                        setGetCom(prev=>{
+                           const val = prev===null ? [] : prev;
+                            return [...val, {commentObj}]
+                        })
+                    }
+                    else{
+                        const commentObj = await getCommentID(movieId);
+                        const userComments = commentObj.userComments
+                        userComments.push(createCommentObj(false, formData.cName, formData.cComment, loggedUser.id))
+                        await writeComments(commentObj, movieId)
+                        setGetCom(prev=>{
+                           const val = prev===null ? [] : prev;
+                            return [...val, {commentObj}]
+                        })
+                    }
                 }
-            }
+                
             setFormData({cName:"", cComment:""})
             setFetching(false)
         }
@@ -85,6 +96,7 @@ function CommentHistory({movieId, loggedUser, changeFetch}){
     const [editForm, setEditForm] = useState({eName:"", eComment: ""});
 
     useEffect(()=>{
+
         async function getComments(){
             try{
                 const movieCommentArr = await getCommentID(movieId);
@@ -107,7 +119,7 @@ function CommentHistory({movieId, loggedUser, changeFetch}){
         changeFetch(true)
         if(editForm.eName.length<1 && editForm.eComment.length<1) return
         const commentsArr = await getCommentID(movieId);
-        const foundComment = commentsArr.userComments.map(elem=>{ 
+        commentsArr.userComments.map(elem=>{ 
             if(elem.commentId===id){
                 elem.name = editForm.eName
                 elem.comment = editForm.eComment

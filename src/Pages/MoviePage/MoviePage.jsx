@@ -5,7 +5,7 @@ import findAPI from '../../Components/API/FindAPI';
 import creditAPI from '../../Components/API/CreditAPI';
 import Tab from './MovieDetails/Tab';
 const imgPath = "https://image.tmdb.org/t/p/w500";
-export default function MoviePage({loggedUser}){
+export default function MoviePage({loggedUser, setAllComments, comments}){
     const [movie, setMovie] = useState(null)
     const [credits, setCredits] = useState(null)
     const [fetching, setFetching] = useState(true)
@@ -32,7 +32,7 @@ export default function MoviePage({loggedUser}){
                     <img src={imgPath + movie.backdrop_path} alt="movie poster" id="movie-poster" />
                     <MovieTitle title = {movie.original_title} releaseYear = {movie.release_date}/>
                     <PosterSummary summary={movie.overview} posterUrl={movie.poster_path}/>
-                    <Tab movie={movie} credits = {credits} loggedUser={loggedUser}/>
+                    <Tab movie={movie} credits = {credits} loggedUser={loggedUser} setAllComments={setAllComments} comments={comments}/>
                 </>
 
             )}

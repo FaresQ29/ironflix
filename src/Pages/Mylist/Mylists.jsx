@@ -20,8 +20,7 @@ export default function Mylists({loggedUser}){
         <div className="my-lists-main">
             {loggedUser && (
                 <>
-                <AddToList />
-                {console.log("render 1")}
+                <AddToList user={loggedUser} reRender={reRender} />
                 <div className="user-list-div">
                     {loggedUser.lists.map((list, i)=>{
                         return <ListCover key={i} list={list} reRender={reRender} user={loggedUser}/>
@@ -120,11 +119,33 @@ function ListInfo({movId, list, reRender}){
 
 
 
-function AddToList(){
+function AddToList({user, reRender}){
+    const [isOpen, setIsOpen] = useState(false);
+    const [inputVal, setInputVal] = useState("");
+
+
+    function handleButton(){
+        setIsOpen(prev=>!prev)
+    }
+    async function handleList(){
+        if(inputVal.length===0) return 
+        const obj = {listName: inputVal, listId: crypto.randomUUID(), movies: []}
+        user.lists.push(obj)
+        await writeUserList(user.id, user)
+        reRender()
+        setInputVal("");
+        setIsOpen(false)
+
+    }
+    const divClass = isOpen ? '' : "add-new-list-input-container-hidden"
     return(
         <div className="add-new-list-div">
             <h2>Add a new list</h2>
-            <img src={addIcon}/>
+            <div className={`add-new-list-input-container ${divClass}`}>
+                <input type="text" placeholder='Enter list name...' value={inputVal} onChange={e=>setInputVal(e.target.value)}/>
+                <button onClick={handleList}>Add new list</button>
+            </div>
+            <img src={addIcon} onClick={handleButton}/>
         </div>
     )
 }

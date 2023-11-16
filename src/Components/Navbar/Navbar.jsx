@@ -14,35 +14,14 @@ export default function Navbar(){
                     <Link to="/">Home</Link>
                     <Link to="/watchlist">Watchlist</Link>
                     <Link to="/mylists">My Lists</Link>
-                    <Link to="/favorites">My Favorites</Link>
-                    <Link to="/popular">Most Popular</Link>
-                    <Link to="/random">Random</Link>
+
                 </div>
             
             <Navhandle navElem = {navRef} />
-            <ThemePicker />
             </div>
         </nav>
     )
 }
-
-function ThemePicker(){
-    const [theme, setTheme] = useState("Dark")
-
-    function themeHandle(e){
-        const switchElem = e.target.childNodes[0];
-        theme === "Dark" ? switchElem.classList.add("theme-switch-light") : switchElem.classList.remove("theme-switch-light")
-        setTheme(prev => prev==="Dark" ? "Light" : "Dark")
-
-    }
-    return (
-
-        <div className="main-theme-switch" onClick={themeHandle}>
-            <div className="theme-switch">{theme} theme</div>
-        </div>
-    )
-}
-
 
 
 function Navhandle({navElem}){

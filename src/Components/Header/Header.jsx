@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Header(userFunctions){
     function testing(){
         console.log(userFunctions.loggedUser)
+        console.log("comments: ", userFunctions.comments);
     }
     
     return (

@@ -2,15 +2,9 @@ import { useState, useEffect } from "react";
 import noImg from '/src/assets/no-img.png'
 import Comments from "./CommentBox";
 import { getCommentID, getComments } from "../../../Components/LocalAPI/CommentApi";
-export default function Tab({movie, credits, loggedUser}){
+export default function Tab({movie, credits, loggedUser, setAllComments, comments}){
     const [currentTab, setCurrentTab] = useState(1);
-    const [comments, setComments] = useState("");
     function handleTab(val){setCurrentTab(val)}
-    async function updateComments(){
-        const comments = await getCommentID(movie.id)
-        setComments(comments.userComments);
-    }
-
 
     return(
         <div className="movie-tab-container">
@@ -24,7 +18,7 @@ export default function Tab({movie, credits, loggedUser}){
                 {currentTab===1 && <CastInfo credits = {credits}/>}
                 {currentTab===2 && <CrewInfo credits = {credits}/>}
                 {currentTab===3 && <Details movie = {movie}/>}
-                {currentTab===4 && <Comments movieId = {movie.id} loggedUser={loggedUser}/>}
+                {currentTab===4 && <Comments movieId = {movie.id} loggedUser={loggedUser}  comments={comments} setAllComments={setAllComments}/>}
             </div>
         </div>
     )

@@ -66,10 +66,6 @@ export default function MovieSquare({movie, loggedUser, renderList}){
                     <p>{movie.title}</p>
                         {loggedUser && (
                         <div className="movie-square-inner-div" onClick={e=>e.preventDefault()}>
-                            <div className="card-icon-div" onClick={()=>statusCheck("favorites")}>
-                                {isChecked.favorites && <span>✓</span>}
-                                <img src={favIcon}/>
-                            </div>
                             <div className="card-icon-div" onClick={showList}> 
                                 <img src={listIcon}/>
                             </div>
